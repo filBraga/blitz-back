@@ -1,9 +1,9 @@
 const express = require('express');
 const TasksService = require('../services/tasksService');
 
-const prodRouter = express.Router();
+const taskRouter = express.Router();
 
-prodRouter.post('/', async (req, res) => {
+taskRouter.post('/', async (req, res) => {
 	try {
 		const { tasks } = req.body;
 		const newTask = await TasksService.create(tasks);
@@ -14,7 +14,7 @@ prodRouter.post('/', async (req, res) => {
 	}
 });
 
-prodRouter.get('/', async (req, res) => {
+taskRouter.get('/', async (req, res) => {
 	try {
 		const tasks = await TasksService.getAll();
 		return res.status(200).json(tasks);
@@ -24,7 +24,7 @@ prodRouter.get('/', async (req, res) => {
 	}
 });
 
-prodRouter.put('/:id', async (req, res) => {
+taskRouter.put('/:id', async (req, res) => {
 	try {
 		const { id, name } = req.body;
 
@@ -37,7 +37,7 @@ prodRouter.put('/:id', async (req, res) => {
 	}
 });
 
-prodRouter.delete('/:id', async (req, res) => {
+taskRouter.delete('/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
 
@@ -50,4 +50,4 @@ prodRouter.delete('/:id', async (req, res) => {
 	}
 });
 
-module.exports = prodRouter;
+module.exports = taskRouter;

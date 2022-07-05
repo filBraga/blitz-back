@@ -1,17 +1,17 @@
-const { Sequelize } = require("sequelize");
+import 'dotenv/config';
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const config = {
+  username: process.env.DB_USER || 'root',
+  password: process.env.DB_PASS || '123456',
+  database: 'Things',
+  host: 'dataDb',
+  port: Number(process.env.DB_PORT) || 3004,
+  dialect: 'mysql',
   dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    timezone: 'Z',
   },
-});
+  logging: false,
+}
 
-//check connection (optional)
-sequelize
-  .authenticate()
-  .then(() => console.log("Connection has been established successfully."))
-  .catch((err) => console.error("Unable to connect to the database:", err));
-
-module.exports = sequelize;
+// export default config; ---> NÃO FUNCIONA <----
+module.exports = config; 
