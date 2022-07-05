@@ -3,8 +3,8 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
      await queryInterface.bulkInsert('Tasks', [{
-       id: 123,
-       text: 'sequelize text'
+       id: 1,
+       text: 'Sequelize text /seeders/202200705...'
      }], {});
   },
 
