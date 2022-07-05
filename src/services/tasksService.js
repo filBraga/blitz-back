@@ -1,7 +1,7 @@
-const { Task } = require('../models');
+const { Tasks } = require('../models');
 
-const createTask = async (task) => {
-	const newTask = await Task.create({ task });
+const createTask = async (text) => {
+	const newTask = await Tasks.create({ text });
 	return newTask;
 };
 
@@ -12,7 +12,7 @@ const readTask = async () => {
 
 const updateTask = async (id, task) => {
 	await Tasks.update(
-		{ id, task },
+		{ id, text },
 		{ where: { id } }
 	);
 	return true;

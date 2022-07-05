@@ -5,18 +5,18 @@ const taskRouter = express.Router();
 
 taskRouter.post('/', async (req, res) => {
 	try {
-		const { tasks } = req.body;
-		const newTask = await TasksService.create(tasks);
+		const { text } = req.body;
+		const newTask = await TasksService.createTask(text);
 		return res.status(201).json(newTask);
 	} catch (error) {
 		console.error(error.message);
-		return res.status(500).send('Deu ruim');
+		return res.status(500).send('Deu ruim aqui 13');
 	}
 });
 
 taskRouter.get('/', async (req, res) => {
 	try {
-		const tasks = await TasksService.getAll();
+		const tasks = await TasksService.readTask();
 		return res.status(200).json(tasks);
 	} catch (error) {
 		console.error(error.message);
@@ -28,7 +28,7 @@ taskRouter.put('/:id', async (req, res) => {
 	try {
 		const { id, name } = req.body;
 
-		await TasksService.edit(id, name);
+		await TasksService.updateTask(id, name);
 
 		return res.status(200).json({ message: 'Produto editado com sucesso' });
 	} catch (error) {
@@ -41,7 +41,7 @@ taskRouter.delete('/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
 
-		await TasksService.remove(id);
+		await TasksService.deleteTask(id);
 
 		return res.status(200).send(`Produto ${id} removido com sucesso`);
 	} catch (error) {
