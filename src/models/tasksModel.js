@@ -1,17 +1,17 @@
-const Task = (sequelize, DataTypes) => {
-	const Task = sequelize.define('Task', {
+const Tasks = (sequelize, DataTypes) => {
+	const Tasks = sequelize.define('Tasks', {
 		id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
 		},
-		task: DataTypes.STRING
+		text: DataTypes.STRING
 	}, {
 		timestamps: false,
 	}
 	);
 
-	return Task;
+	return Tasks;
 };
 
-module.exports = Task;
+module.exports = Tasks;
