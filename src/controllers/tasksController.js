@@ -6,9 +6,7 @@ const prodRouter = express.Router();
 prodRouter.post('/', async (req, res) => {
 	try {
 		const { tasks } = req.body;
-
 		const newTask = await TasksService.create(tasks);
-
 		return res.status(201).json(newTask);
 	} catch (error) {
 		console.error(error.message);
