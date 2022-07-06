@@ -26,9 +26,11 @@ taskRouter.get('/', async (req, res) => {
 
 taskRouter.put('/:id', async (req, res) => {
 	try {
-		const { id, name } = req.body;
 
-		await TasksService.updateTask(id, name);
+		const { id } =  req.params;
+		const { text } = req.body;
+
+		await TasksService.updateTask(id, text);
 
 		return res.status(200).json({ message: 'Produto editado com sucesso' });
 	} catch (error) {

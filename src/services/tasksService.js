@@ -10,9 +10,9 @@ const readTask = async () => {
 	return tasks;
 };
 
-const updateTask = async (id, task) => {
+const updateTask = async (id, text) => {
 	await Tasks.update(
-		{ id, text },
+		{ text },
 		{ where: { id } }
 	);
 	return true;
